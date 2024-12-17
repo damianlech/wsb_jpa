@@ -23,15 +23,15 @@ insert into doctor (id, first_name, last_name, telephone_number, email, doctor_n
                     '789', 'SURGEON', 3);
 
 
-insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (1, 'Jane', 'Smith', '333222111', 'jane.smith@mail.com',
-        '111', '1990-01-01', 4);
-insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+        '111', '1990-01-01', 4, '2024-03-14');
+insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (2, 'Kathy', 'Old', '666555444', 'kathy.old@mail.com',
-        '222', '1990-01-01', 5);
-insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id)
+        '222', '1990-01-01', 5, '2024-03-14');
+insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (3, 'Eve', 'Clinton', '999888777', 'eve.clinton@mail.com',
-        '333', '1990-01-01', 6);
+        '333', '1990-01-01', 6, '2024-03-14');
 
 
 insert into visit (id, description, time, doctor_id, patient_id)
@@ -39,7 +39,7 @@ insert into visit (id, description, time, doctor_id, patient_id)
 insert into visit (id, description, time, doctor_id, patient_id)
             values (2, 'Lung check', '2024-10-10 12:00:00', 2, 2);
 insert into visit (id, description, time, doctor_id, patient_id)
-            values (3, 'Lung check', '2024-10-10 12:00:00', 2, 3);
+            values (3, 'Lung check', '2024-10-10 12:00:00', 2, 1);
 
 
 insert into medical_treatment (id, description, type, visit_id)

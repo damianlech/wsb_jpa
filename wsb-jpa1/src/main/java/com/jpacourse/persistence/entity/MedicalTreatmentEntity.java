@@ -18,7 +18,7 @@ public class MedicalTreatmentEntity {
 	@Enumerated(EnumType.STRING)
 	private TreatmentType type;
 
-	// One-Way relation from parent
+	// Two-Way relationship
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "VISIT_ID", nullable = false)
 	private VisitEntity visit;

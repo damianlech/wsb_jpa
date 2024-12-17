@@ -2,6 +2,7 @@ package com.jpacourse.persistence.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "VISIT")
@@ -21,10 +22,14 @@ public class VisitEntity {
 	@JoinColumn(name = "DOCTOR_ID", nullable = false)
 	private DoctorEntity doctor;
 
-	// One-Way relation from parent
+	// Two-Way relationship
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_ID", nullable = false)
 	private PatientEntity patient;
+
+	// Two-Way relationship
+	@OneToMany(mappedBy = "visit", cascade = CascadeType.REMOVE)
+	private List<MedicalTreatmentEntity> medicalTreatments;
 
 	public Long getId() {
 		return id;
