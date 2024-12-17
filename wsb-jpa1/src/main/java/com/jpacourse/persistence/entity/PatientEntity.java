@@ -115,4 +115,12 @@ public class PatientEntity {
 	public void setCreatedAt(Timestamp createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	public List<VisitEntity> getVisits() {
+		return visits;
+	}
+
+	public void setVisits(List<VisitEntity> visits) {
+		this.visits = visits;
+	}
 }
