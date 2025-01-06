@@ -8,6 +8,7 @@ import com.jpacourse.rest.exception.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -54,6 +55,14 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
                 " HAVING COUNT(v.patient.id) > :numberOfVisits";
         TypedQuery<PatientEntity> typedQuery = entityManager.createQuery(query, PatientEntity.class);
         typedQuery.setParameter("numberOfVisits", numberOfVisits);
+        return typedQuery.getResultList();
+    }
+
+    @Override
+    public List<PatientEntity> getPatientsCreatedAfter(Timestamp creationDate) {
+        String query = "SELECT p FROM PatientEntity p WHERE p.createdAt > :creationDate";
+        TypedQuery<PatientEntity> typedQuery = entityManager.createQuery(query, PatientEntity.class);
+        typedQuery.setParameter("creationDate", creationDate);
         return typedQuery.getResultList();
     }
 }

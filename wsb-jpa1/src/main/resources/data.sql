@@ -27,16 +27,16 @@ insert into doctor (id, first_name, last_name, telephone_number, email, doctor_n
 
 insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (1, 'Jane', 'Smith', '333222111', 'jane.smith@mail.com',
-        '111', '1990-01-01', 4, '2024-03-14');
+        '111', '1990-01-01', 4, '2020-03-14');
 insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (2, 'Kathy', 'Old', '666555444', 'kathy.old@mail.com',
         '222', '1990-01-01', 5, '2024-03-14');
 insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (3, 'Eve', 'Clinton', '999888777', 'eve.clinton@mail.com',
-        '333', '1990-01-01', 6, '2024-03-14');
+        '333', '1990-01-01', 6, '2023-03-14');
 insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (4, 'John', 'Smith', '333777111', 'john.smith@mail.com',
-        '444', '1990-01-01', 7, '2024-03-14');
+        '444', '1990-01-01', 7, '2020-03-14');
 
 
 insert into visit (id, description, time, doctor_id, patient_id)

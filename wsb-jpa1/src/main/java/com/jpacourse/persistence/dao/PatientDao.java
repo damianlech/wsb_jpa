@@ -3,6 +3,7 @@ package com.jpacourse.persistence.dao;
 import com.jpacourse.persistence.entity.PatientEntity;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -17,4 +18,7 @@ public interface PatientDao extends Dao<PatientEntity, Long>
 
     @Transactional
     List<PatientEntity> getPatientsHavingMoreThanGivenVisits(Long numberOfVisits);
+
+    @Transactional
+    List<PatientEntity> getPatientsCreatedAfter(Timestamp creationDate);
 }

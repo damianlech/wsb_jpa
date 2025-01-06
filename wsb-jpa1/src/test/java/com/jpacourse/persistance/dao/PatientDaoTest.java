@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -55,7 +56,6 @@ public class PatientDaoTest {
         List<PatientEntity> patients = patientDao.getPatientsByLastName(lastName);
 
         // then
-
         assertThat(patients).isNotNull();
         assertThat(patients.size()).isEqualTo(2);
         assertThat(patients.get(0).getLastName()).isEqualTo(lastName);
@@ -74,9 +74,24 @@ public class PatientDaoTest {
         List<PatientEntity> patients = patientDao.getPatientsHavingMoreThanGivenVisits(numberOfVisits);
 
         // then
-
         assertThat(patients).isNotNull();
         assertThat(patients.size()).isEqualTo(1);
         assertThat(patients.get(0).getId()).isEqualTo(1);
+    }
+
+    @Transactional
+    @Test
+    public void shouldFindPatientsWithCreationDateLaterThan(){
+        // given
+        Timestamp creationDate = Timestamp.valueOf("2022-01-01 00:00:00");
+
+        // when
+        List<PatientEntity> patients = patientDao.getPatientsCreatedAfter(creationDate);
+
+        // then
+        assertThat(patients).isNotNull();
+        assertThat(patients.size()).isEqualTo(2);
+        assertThat(patients.get(0).getId()).isEqualTo(2);
+        assertThat(patients.get(1).getId()).isEqualTo(3);
     }
 }
