@@ -34,6 +34,9 @@ public class DoctorEntity {
 	@OneToOne
 	private AddressEntity address;
 
+	@Version
+	private Integer version;
+
 	public Long getId() {
 		return id;
 	}

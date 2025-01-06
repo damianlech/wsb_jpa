@@ -49,6 +49,5 @@ public class PatientServiceImpl implements PatientService
         }
         throw new EntityNotFoundException(id);
     }
-
 }
 
