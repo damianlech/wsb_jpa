@@ -63,4 +63,20 @@ public class PatientDaoTest {
         assertThat(patients.get(0).getId()).isEqualTo(1);
         assertThat(patients.get(1).getId()).isEqualTo(4);
     }
+
+    @Transactional
+    @Test
+    public void shouldFindPatientsWithNumberOfVisitsHigherThan(){
+        // given
+        Long numberOfVisits = 1L;
+
+        // when
+        List<PatientEntity> patients = patientDao.getPatientsHavingMoreThanGivenVisits(numberOfVisits);
+
+        // then
+
+        assertThat(patients).isNotNull();
+        assertThat(patients.size()).isEqualTo(1);
+        assertThat(patients.get(0).getId()).isEqualTo(1);
+    }
 }

@@ -14,4 +14,7 @@ public interface PatientDao extends Dao<PatientEntity, Long>
 
     @Transactional
     List<PatientEntity> getPatientsByLastName(String lastName);
+
+    @Transactional
+    List<PatientEntity> getPatientsHavingMoreThanGivenVisits(Long numberOfVisits);
 }

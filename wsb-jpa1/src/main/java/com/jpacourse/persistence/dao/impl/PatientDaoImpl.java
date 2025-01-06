@@ -45,4 +45,15 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         typedQuery.setParameter("lastName", lastName);
         return typedQuery.getResultList();
     }
+
+    @Override
+    public List<PatientEntity> getPatientsHavingMoreThanGivenVisits(Long numberOfVisits) {
+        String query = "SELECT p FROM PatientEntity p " +
+                " INNER JOIN VisitEntity v ON p.id = v.patient.id " +
+                " GROUP BY v.patient.id " +
+                " HAVING COUNT(v.patient.id) > :numberOfVisits";
+        TypedQuery<PatientEntity> typedQuery = entityManager.createQuery(query, PatientEntity.class);
+        typedQuery.setParameter("numberOfVisits", numberOfVisits);
+        return typedQuery.getResultList();
+    }
 }
