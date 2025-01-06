@@ -10,6 +10,8 @@ insert into address (id, address_line1, address_line2, city, postal_code)
             values (5, 'aewqa', 'bsafb', 'cityycxzy', '30-690');
 insert into address (id, address_line1, address_line2, city, postal_code)
             values (6, 'aewqffa', 'bbsrqewdsa', 'cisdaqewdatyyy', '45-640');
+insert into address (id, address_line1, address_line2, city, postal_code)
+            values (7, 'aedsafa', 'dsaqewdsa', 'cisdaewdatyyy', '45-640');
 
 
 insert into doctor (id, first_name, last_name, telephone_number, email, doctor_number, specialization, address_id)
@@ -32,6 +34,9 @@ insert into patient (id, first_name, last_name, telephone_number, email, patient
 insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
             values (3, 'Eve', 'Clinton', '999888777', 'eve.clinton@mail.com',
         '333', '1990-01-01', 6, '2024-03-14');
+insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, created_at)
+            values (4, 'John', 'Smith', '333777111', 'john.smith@mail.com',
+        '444', '1990-01-01', 7, '2024-03-14');
 
 
 insert into visit (id, description, time, doctor_id, patient_id)

@@ -7,7 +7,9 @@ import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.rest.exception.EntityNotFoundException;
 import org.springframework.stereotype.Repository;
 
+import javax.persistence.TypedQuery;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements PatientDao
@@ -34,5 +36,13 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
 
         entityManager.persist(visit);
         entityManager.merge(patient);
+    }
+
+    @Override
+    public List<PatientEntity> getPatientsByLastName(String lastName) {
+        String query = "SELECT p FROM PatientEntity p WHERE p.lastName = :lastName";
+        TypedQuery<PatientEntity> typedQuery = entityManager.createQuery(query, PatientEntity.class);
+        typedQuery.setParameter("lastName", lastName);
+        return typedQuery.getResultList();
     }
 }

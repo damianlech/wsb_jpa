@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -42,5 +43,24 @@ public class PatientDaoTest {
         assertThat(visit.getTime()).isEqualTo(visitDate);
         assertThat(visit.getPatient().getId()).isEqualTo(patientId);
         assertThat(visit.getDoctor().getId()).isEqualTo(doctorId);
+    }
+
+    @Transactional
+    @Test
+    public void shouldFindPatientsByLastName(){
+        // given
+        String lastName = "Smith";
+
+        // when
+        List<PatientEntity> patients = patientDao.getPatientsByLastName(lastName);
+
+        // then
+
+        assertThat(patients).isNotNull();
+        assertThat(patients.size()).isEqualTo(2);
+        assertThat(patients.get(0).getLastName()).isEqualTo(lastName);
+        assertThat(patients.get(1).getLastName()).isEqualTo(lastName);
+        assertThat(patients.get(0).getId()).isEqualTo(1);
+        assertThat(patients.get(1).getId()).isEqualTo(4);
     }
 }
